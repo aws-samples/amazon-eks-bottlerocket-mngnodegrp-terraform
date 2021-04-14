@@ -9,7 +9,7 @@ By default, instances in a managed node group use the latest version of the Amaz
 
 ## Architecture
 
-[image](https://user-images.githubusercontent.com/80008225/114780279-ca25b700-9d3c-11eb-9301-2c2b02f6fcd7.png)
+(https://user-images.githubusercontent.com/80008225/114780279-ca25b700-9d3c-11eb-9301-2c2b02f6fcd7.png)
 
 ## Usage Example 
 
