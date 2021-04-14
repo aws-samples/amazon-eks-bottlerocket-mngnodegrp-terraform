@@ -44,6 +44,10 @@ KUBECONFIG
 
 
 
-output "config_map_aws_auth" {
-  value = local.config_map_aws_auth
+output "cluster-name" {
+  value = aws_eks_cluster.cluster.name
+}
+
+output "endpoint" {
+  value = aws_eks_cluster.cluster.endpoint
 }
