@@ -10,7 +10,7 @@ resource "null_resource" "kubectl" {
     interpreter = ["/bin/bash", "-c"]
 environment = {
       KUBECONFIG = base64encode(local.awskubeconfig)
-      filename= "${path.root}/aws_auth_config_map.yaml"
+      filename= "${path.root}/config_map_aws_auth.yaml"
   }
 }
 depends_on = [local_file.aws_auth_configmap,
