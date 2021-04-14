@@ -4,8 +4,8 @@ By default, instances in a managed node group use the latest version of the Amaz
 
 ## Prerequisites
 
-* *An AWS account with admin privileges: *For this blog, we will assume you already have an AWS account with admin privileges.
-* *Command-line tools.* On your workstation(we assume you would use Mac/Linux), you will need to install the latest version of [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html),[kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html), and [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) (>=v0.13.0)
+* An AWS account with admin privileges: We will assume you already have an [AWS account](https://docs.aws.amazon.com/polly/latest/dg/setting-up.html) with admin privileges.
+* Command-line tools. On your workstation(we assume you would use Mac/Linux), you will need to install the latest version of [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html),[kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html), and [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) (>=v0.13.0)
 
 ## Architecture
 ![image](https://user-images.githubusercontent.com/80008225/114781741-b1b69c00-9d3e-11eb-8db4-3c7961f48526.png)
