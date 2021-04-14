@@ -8,8 +8,8 @@ By default, instances in a managed node group use the latest version of the Amaz
 * *Command-line tools.* On your workstation(we assume you would use Mac/Linux), you will need to install the latest version of AWS CLI (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html "AWS CLI"),kubectl (https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html "kubectl"), and terraform (https://learn.hashicorp.com/tutorials/terraform/install-cli "terraform") (>=v0.13.0)
 
 ## Architecture
+![image](https://user-images.githubusercontent.com/80008225/114781741-b1b69c00-9d3e-11eb-8db4-3c7961f48526.png)
 
-(https://user-images.githubusercontent.com/80008225/114780279-ca25b700-9d3c-11eb-9301-2c2b02f6fcd7.png)
 
 ## Usage Example 
 
