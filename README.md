@@ -9,7 +9,30 @@ By default, instances in a managed node group use the latest version of the Amaz
 
 ## Architecture
 
-image (2).png![image](https://user-images.githubusercontent.com/80008225/114780279-ca25b700-9d3c-11eb-9301-2c2b02f6fcd7.png)
+[image](https://user-images.githubusercontent.com/80008225/114780279-ca25b700-9d3c-11eb-9301-2c2b02f6fcd7.png)
+
+## Usage Example 
+
+* Clone terraform codes in your home directory 
+```
+git clone  https://github.com/aws-samples/amazon-eks-bottlerocket-mngnodegrp-terraform.git
+
+```
+```
+cd amazon-eks-bottlerocket-mngnodegrp-terraform
+
+```
+then run init, plan and apply commands.
+```
+terraform init
+```
+```
+terraform plan
+```
+```
+terraform apply --auto-approve
+```
+
 
 ## License
 
