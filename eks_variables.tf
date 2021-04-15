@@ -19,11 +19,6 @@ variable "aws_auth_role_map" {
   description = "A list of mappings from aws role arns to kubernetes users, and their groups"
 }
 
-#variable "oidc_root_ca_thumbprints" {
-#  type        = list(string)
-#  default     = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"]
-#  description = "Thumbprint of Root CA for EKS OpenID Connect (OIDC) identity provider, Valid until 2037 🤞"
-#}
 
 variable "aws_auth_user_map" {
   type = list(object({
@@ -34,12 +29,6 @@ variable "aws_auth_user_map" {
   default     = []
   description = "A list of mappings from aws user arns to kubernetes users, and their groups"
 }
-
-#variable "aws_ebs_csi_driver" {
-#  type        = bool
-#  default     = true
-#  description = "Should the Amazon Elastic Block Store (EBS) CSI driver be deployed"
-#}
 
 variable "fstype" {
   type        = string
