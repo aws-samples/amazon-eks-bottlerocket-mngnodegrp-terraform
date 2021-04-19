@@ -33,7 +33,7 @@ variable "instance_size" {
 
 variable "key_name" {
   type    = string
-  default = "DevOps-Demo"
+  default = ""
 }
 
 variable "root_volume_size" {
