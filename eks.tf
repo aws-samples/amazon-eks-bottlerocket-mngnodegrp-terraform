@@ -7,6 +7,9 @@ data "aws_subnet_ids" "private" {
     tags = {
         "subnet-type"  = "private"
     }
+  depends_on = [
+    aws_subnet.private
+   ]
 }
 
 data "aws_subnet_ids" "public" {
@@ -14,6 +17,9 @@ data "aws_subnet_ids" "public" {
     tags = {
         "subnet-type"  = "public"
     }
+  depends_on = [
+    aws_subnet.public
+  ]
 }
 
 
