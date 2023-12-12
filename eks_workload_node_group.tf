@@ -8,7 +8,7 @@ locals {
 resource "random_string" "worker-mng-name" {
   length  = 4
   upper   = false
-  number  = true
+  numeric = true
   lower   = true
   special = false
 }

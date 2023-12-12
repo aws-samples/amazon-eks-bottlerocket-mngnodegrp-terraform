@@ -7,6 +7,7 @@ data "aws_subnets" "private" {
     name   = "tag:subnet-type"
     values = ["private"]
   }
+  depends_on = [aws_vpc.eks_network]
 }
 
 data "aws_subnets" "public" {
@@ -14,6 +15,7 @@ data "aws_subnets" "public" {
     name   = "tag:subnet-type"
     values = ["public"]
   }
+  depends_on = [aws_vpc.eks_network]
 }
 
 resource "aws_security_group" "control_plane" {
@@ -51,7 +53,9 @@ resource "aws_eks_cluster" "cluster" {
     aws_iam_role.cluster_role,
     aws_iam_role.managed_workers,
     aws_cloudwatch_log_group.cluster,
-    aws_nat_gateway.eks_network_nat_gateway
+    aws_nat_gateway.eks_network_nat_gateway,
+    data.aws_subnets.private,
+    data.aws_subnets.public
   ]
 
   provisioner "local-exec" {

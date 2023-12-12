@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "eks_network_gateway" {
 
 # NAT gateway
 resource "aws_eip" "eks_network_nat_gateway" {
-  vpc        = true
+  domain     = "vpc"
   depends_on = [aws_internet_gateway.eks_network_gateway]
 
   tags = {
