@@ -1,7 +1,7 @@
 ############### VPC variables
 variable "name" {
   type        = string
-  default = "eks-bottlerocket-imnr"
+  default     = "eks-bottlerocket-imnr"
   description = "A name for this stack."
 }
 
@@ -16,7 +16,7 @@ variable "cidr_block" {
   description = "The CIDR block for the VPC."
 }
 variable "availability_zones" {
-  default = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
   description = "The availability zones to create subnets in"
 }
 

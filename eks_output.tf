@@ -42,7 +42,9 @@ users:
 KUBECONFIG
 }
 
-
+output "configure_kubectl" {
+  value = "aws eks --region ${var.region} update-kubeconfig --name ${aws_eks_cluster.cluster.name}"
+}
 
 output "cluster-name" {
   value = aws_eks_cluster.cluster.name

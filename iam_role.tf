@@ -2,7 +2,7 @@
 resource "aws_iam_role" "cluster_role" {
   name = "EKS-${var.name}-cluster-role"
 
-assume_role_policy = <<POLICY
+  assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -17,7 +17,7 @@ assume_role_policy = <<POLICY
 }
 POLICY
 
-tags = var.tags
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
@@ -34,7 +34,7 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSServicePolicy" {
 # Resource to create eks worker node role
 
 resource "aws_iam_role" "managed_workers" {
-  name = "EKS-${var.name}-worker-node-role"
+  name               = "EKS-${var.name}-worker-node-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",

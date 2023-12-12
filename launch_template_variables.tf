@@ -13,7 +13,7 @@ variable "labels" {
 
 variable "taints" {
   type        = map(string)
-  default     = { }
+  default     = {}
   description = "taints that will be added to the kubernetes node"
 }
 
@@ -26,7 +26,6 @@ variable "bottlerocket_admin_source" {
 
 variable "instance_size" {
   type        = string
-  #default     = "large"
   default     = "m5.large"
   description = "The size of instances in this node group"
 }

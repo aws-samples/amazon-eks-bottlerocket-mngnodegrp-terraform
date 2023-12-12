@@ -1,10 +1,9 @@
 data "aws_availability_zones" "available" {}
 
-
 resource "aws_subnet" "public" {
   count = var.az_counts
 
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
   cidr_block              = cidrsubnet(var.cidr_block, 8, count.index)
   vpc_id                  = aws_vpc.eks_network.id
   map_public_ip_on_launch = true
@@ -13,7 +12,7 @@ resource "aws_subnet" "public" {
     Name                             = "${var.name}-public-${data.aws_availability_zones.available.names[count.index]}"
     "kubernetes.io/role/elb"         = "1"
     "kubernetes.io/role/alb-ingress" = "1"
-    "subnet-type"             = "public"
+    "subnet-type"                    = "public"
   }
 
   lifecycle {
@@ -24,17 +23,17 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_route_table_association" "public" {
-   count = var.az_counts
+  count = var.az_counts
 
-   subnet_id      = aws_subnet.public.*.id[count.index]
+  subnet_id      = aws_subnet.public.*.id[count.index]
   route_table_id = aws_route_table.eks_network_public.id
 }
 
 # Private subnets
 resource "aws_subnet" "private" {
-   count = var.az_counts
+  count = var.az_counts
 
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
   cidr_block              = cidrsubnet(var.cidr_block, 8, count.index + 20)
   vpc_id                  = aws_vpc.eks_network.id
   map_public_ip_on_launch = false
@@ -43,7 +42,7 @@ resource "aws_subnet" "private" {
     Name                              = "${var.name}-private-${data.aws_availability_zones.available.names[count.index]}"
     "kubernetes.io/role/internal-elb" = "1"
     "kubernetes.io/role/alb-ingress"  = "1"
-    "subnet-type"             = "private"
+    "subnet-type"                     = "private"
   }
 
   lifecycle {
@@ -56,7 +55,7 @@ resource "aws_subnet" "private" {
 
 resource "aws_nat_gateway" "eks_network_nat_gateway" {
   allocation_id = aws_eip.eks_network_nat_gateway.id
-  subnet_id      = aws_subnet.public.*.id[0]
+  subnet_id     = aws_subnet.public.*.id[0]
 
   tags = {
     Name = var.name
