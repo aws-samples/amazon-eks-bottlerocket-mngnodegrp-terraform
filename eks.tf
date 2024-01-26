@@ -2,26 +2,21 @@ data "aws_vpc" "network" {
   id = aws_vpc.eks_network.id
 }
 
-data "aws_subnet_ids" "private" {
-    vpc_id = aws_vpc.eks_network.id
-    tags = {
-        "subnet-type"  = "private"
-    }
-  depends_on = [
-    aws_subnet.private
-   ]
+data "aws_subnets" "private" {
+  filter {
+    name   = "tag:subnet-type"
+    values = ["private"]
+  }
+  depends_on = [aws_vpc.eks_network]
 }
 
-data "aws_subnet_ids" "public" {
-    vpc_id = aws_vpc.eks_network.id
-    tags = {
-        "subnet-type"  = "public"
-    }
-  depends_on = [
-    aws_subnet.public
-  ]
+data "aws_subnets" "public" {
+  filter {
+    name   = "tag:subnet-type"
+    values = ["public"]
+  }
+  depends_on = [aws_vpc.eks_network]
 }
-
 
 resource "aws_security_group" "control_plane" {
   count = var.legacy_security_groups ? 1 : 0
@@ -48,7 +43,7 @@ resource "aws_eks_cluster" "cluster" {
   role_arn                  = aws_iam_role.cluster_role.arn
   version                   = var.eks_version
   vpc_config {
-    subnet_ids              = concat(sort(data.aws_subnet_ids.private.ids), sort(data.aws_subnet_ids.public.ids))
+    subnet_ids              = concat(sort(data.aws_subnets.private.ids), sort(data.aws_subnets.public.ids))
     security_group_ids      = aws_security_group.control_plane.*.id
     endpoint_private_access = "true"
     endpoint_public_access  = "true"
@@ -58,7 +53,9 @@ resource "aws_eks_cluster" "cluster" {
     aws_iam_role.cluster_role,
     aws_iam_role.managed_workers,
     aws_cloudwatch_log_group.cluster,
-    aws_nat_gateway.eks_network_nat_gateway
+    aws_nat_gateway.eks_network_nat_gateway,
+    data.aws_subnets.private,
+    data.aws_subnets.public
   ]
 
   provisioner "local-exec" {

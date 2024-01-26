@@ -19,7 +19,6 @@ variable "aws_auth_role_map" {
   description = "A list of mappings from aws role arns to kubernetes users, and their groups"
 }
 
-
 variable "aws_auth_user_map" {
   type = list(object({
     userarn  = string
@@ -36,9 +35,7 @@ variable "fstype" {
   description = "File system type that will be formatted during volume creation, (xfs, ext2, ext3 or ext4)"
 }
 
-
 variable "eks_version" {
   type    = string
-  default = "1.19"
+  default = "1.27"
 }
-
